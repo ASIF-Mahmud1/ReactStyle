@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { VictoryBar, VictoryChart,VictoryAxis, VictoryTheme } from 'victory';
+import { VictoryBar, VictoryChart,VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
 
+// Stack Multiple Bar Charts...
+// Wrap all four VictoryBar components with VictoryStack
 const data = [
   {quarter: 1, earnings: 13000},
   {quarter: 2, earnings: 16500},
@@ -9,15 +11,23 @@ const data = [
   {quarter: 4, earnings: 30000},
   {quarter: 5, earnings: 20000}
 ];
-// Note: I have wrapped the VictoryBar component in VictoryChart. Default axes are automatically
-// configured to match data provided by VictoryBar
-//VictoryChart is a wrapper component that plots all of its children on the same scale.
-//VictoryChart also provides default axes. Import VictoryChart like so:
-// Customizing Axes:
-// modify the tick labels on the axes to be a little more descriptive.
-//We can do this by adding and configuring VictoryAxis components to our chart.
-// You can Add a Theme by  importing VictoryTheme and adding a theme prop to VictoryChart.
-//  Themes should always be applied to the outermost wrapper component in a chart.
+
+const data2 = [
+  {quarter: 1, earnings: 1300},
+  {quarter: 2, earnings: 1650},
+  {quarter: 3, earnings: 2450},
+  {quarter: 4, earnings: 4000},
+  {quarter: 5, earnings: 3000}
+];
+
+const data3 = [
+  {quarter: 1, earnings: 2000},
+  {quarter: 2, earnings: 5050},
+  {quarter: 3, earnings: 3550},
+  {quarter: 4, earnings: 2000},
+  {quarter: 5, earnings: 7000}
+];
+
 
 class BarChart extends React.Component{
 
@@ -41,13 +51,31 @@ class BarChart extends React.Component{
               // tickFormat specifies how ticks should be displayed
               tickFormat={(x) => (`$${x / 1000}k`)}
             />
-      <VictoryBar
-        data={data}
-         // data accessor for x values
-         x="quarter"
-         // data accessor for y values
-         y="earnings"
-      />
+      <VictoryStack
+         colorScale={"warm"}
+      >
+        <VictoryBar
+          data={data}
+           // data accessor for x values
+           x="quarter"
+           // data accessor for y values
+           y="earnings"
+        />
+        <VictoryBar
+          data={data2}
+           // data accessor for x values
+           x="quarter"
+           // data accessor for y values
+           y="earnings"
+        />
+        <VictoryBar
+          data={data3}
+           // data accessor for x values
+           x="quarter"
+           // data accessor for y values
+           y="earnings"
+        />
+      </VictoryStack>
     </VictoryChart>
     )
   }
