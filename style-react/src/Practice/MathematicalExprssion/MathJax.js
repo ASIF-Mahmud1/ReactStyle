@@ -11,7 +11,7 @@ class JackedMath extends React.Component{
         <div>
             <MathJax.Context input='ascii'>
                 <div>
-                    This is an inline formula written in AsciiMath: <MathJax.Node inline>{ ascii }</MathJax.Node>
+                    This is an inline formula written in AsciiMath: <MathJax.Node inline>{ this.props.expression }</MathJax.Node>
                 </div>
             </MathJax.Context>
         </div>
