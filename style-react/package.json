@@ -8,6 +8,7 @@
     "lodash": "^4.17.11",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-mathjax2": "0.0.2",
     "react-scripts": "2.1.2",
     "typeface-roboto": "0.0.54",
     "victory": "^31.0.2"
