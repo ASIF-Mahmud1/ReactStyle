@@ -15,9 +15,10 @@ import AreaAnimations from './Practice/Victory/AreaAnimation'
 import Animation from './Practice/Victory/Animation'
 import BarAnimation from './Practice/Victory/BarAnimation'
 import Quadratic from    './Practice/Victory/QuadraticFunction.js'
+import JackedMath from './Practice/MathematicalExprssion/MathJax.js'
 //////////////////////////////////////////////////
 
-ReactDOM.render(<Quadratic />, document.getElementById('root'));
+ReactDOM.render(<JackedMath />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
