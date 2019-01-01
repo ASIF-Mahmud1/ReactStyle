@@ -48,3 +48,40 @@ class Quadratic extends React.Component{
     }
   }
 export default BarChart
+
+
+// class BarChart extends React.Component{
+//
+//   render()
+//   {
+//     return(
+//       <VictoryChart>
+//           <VictoryLine
+//             samples={5000}
+//             data= {[-5,-4,-3,-2,-1,0,1,2,3,4,5]}
+//             x={0}
+//             style={{data:
+//               {stroke: "red", strokeWidth: 4}
+//             }}
+//             y={(data) => Math.sin(2 * Math.PI * data.x)}
+//           />
+//
+//           <VictoryLine
+//             samples={10}
+//             style={{data:
+//               {stroke: "blue", strokeWidth: 4}
+//             }}
+//             y={(data) => Math.cos(2 * Math.PI * data.x)}
+//           />
+//
+//           <VictoryLine
+//             samples={10}
+//             style={{data:
+//               {stroke: "orange", strokeWidth: 4}
+//             }}
+//             y={(data) => data}
+//           />
+//         </VictoryChart>
+//     )
+//   }
+// }
