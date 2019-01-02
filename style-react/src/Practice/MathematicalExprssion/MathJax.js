@@ -22,8 +22,8 @@ class JackedMathAscii extends React.Component{
 // const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
 // const content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$${ascii}$$`
 class JackedMathAsciiDelimeters extends React.Component{
-  ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
-   content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$ $$ ${this.ascii} $$`
+  ascii =  this.props.expression  //'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
+   content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$ `
   render()
   {
     return (
@@ -46,7 +46,7 @@ class JackedMathAsciiDelimeters extends React.Component{
                     }
                 } }
             >
-                <MathJax.Text text={ this.content }/>
+                <MathJax.Text text={ this.content +`$$ ${this.props.expression} $$` }/>
             </MathJax.Context>
         );
   }
@@ -60,7 +60,7 @@ class JackedMathAsciiBlock extends React.Component{
             <div>
                 <MathJax.Context input='ascii'>
                     <div>
-                      Block Display:  <MathJax.Node>{this.ascii}</MathJax.Node>
+                      Block Display:  <MathJax.Node>{this.props.expression}</MathJax.Node>
                     </div>
                 </MathJax.Context>
             </div>
@@ -71,13 +71,17 @@ class JackedMathAsciiBlock extends React.Component{
 
 class JackedMathLatex extends React.Component{
    tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
+        //  f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+
   render()
   {
+    console.log("Type of tex is " ,typeof this.tex)
+      console.log("Type of expression is " ,typeof this.props.expression)
     return (
            <div>
                <MathJax.Context input='tex'>
                    <div>
-                       This is an inline math formula: <MathJax.Node inline>{this.tex}</MathJax.Node>
+                       This is an inline math formula Latex : <MathJax.Node inline> {this.tex} {console.log(typeof this.tex, this.tex)}</MathJax.Node>
                    </div>
                </MathJax.Context>
            </div>
@@ -93,7 +97,7 @@ class JackedMathLatexBlock extends React.Component{
             <div>
                 <MathJax.Context input='tex'>
                     <div>
-                      Block Latex:   <MathJax.Node>{this.tex}</MathJax.Node>
+                      Block Latex:   <MathJax.Node>{this.props.expression}</MathJax.Node>
                     </div>
                 </MathJax.Context>
             </div>

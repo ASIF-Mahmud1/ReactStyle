@@ -1,14 +1,16 @@
 import React from 'react'
 import {JackedMathAscii, JackedMathAsciiBlock, JackedMathAsciiDelimeters,JackedMathLatex, JackedMathLatexBlock} from './MathJax.js'
 
-const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
+// const ascii = U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))
+//
+// const tex = f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi
 
 class Start extends React.Component{
   constructor(props)
   {
     super(props)
     this.state ={
-      inputValue: 'Nothing'
+      inputValue: 'S_n= (n/2)*(2a +(n-1)d'
     }
   }
 
@@ -28,10 +30,10 @@ class Start extends React.Component{
         </label>
         <p>Your Beautiful Equation is : {this.state.inputValue}</p>
         <JackedMathAscii expression= {this.state.inputValue} />
-        <JackedMathAsciiDelimeters />
-        <JackedMathAsciiBlock />
-        <JackedMathLatex />
-        <JackedMathLatexBlock />
+        <JackedMathAsciiDelimeters expression= {this.state.inputValue} />
+        <JackedMathAsciiBlock expression= {this.state.inputValue} />
+        <JackedMathLatex expression= {this.state.inputValue}  />
+        <JackedMathLatexBlock expression= {this.state.inputValue} />
       </div>
     )
   }
