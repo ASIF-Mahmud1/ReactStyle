@@ -1,5 +1,5 @@
 import React from 'react'
-import JackedMath from './MathJax.js'
+import {JackedMathAscii, JackedMathAsciiBlock, JackedMathAsciiDelimeters,JackedMathLatex, JackedMathLatexBlock} from './MathJax.js'
 
 const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
 
@@ -27,7 +27,11 @@ class Start extends React.Component{
           <input   type="text"  onChange={this.handleChange}/>
         </label>
         <p>Your Beautiful Equation is : {this.state.inputValue}</p>
-        <JackedMath expression= {this.state.inputValue} />
+        <JackedMathAscii expression= {this.state.inputValue} />
+        <JackedMathAsciiDelimeters />
+        <JackedMathAsciiBlock />
+        <JackedMathLatex />
+        <JackedMathLatexBlock />
       </div>
     )
   }

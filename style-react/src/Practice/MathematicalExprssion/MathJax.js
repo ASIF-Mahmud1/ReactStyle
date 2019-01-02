@@ -3,7 +3,7 @@ import MathJax from 'react-mathjax2'
 
 const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
 
-class JackedMath extends React.Component{
+class JackedMathAscii extends React.Component{
 
   render()
   {
@@ -18,8 +18,90 @@ class JackedMath extends React.Component{
     );
   }
 }
+///////////////////////////////////////////////////////////////////////
+// const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
+// const content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$${ascii}$$`
+class JackedMathAsciiDelimeters extends React.Component{
+  ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
+   content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$${this.ascii}$$`
+  render()
+  {
+    return (
+            <MathJax.Context
+                input='ascii'
+                onLoad={ () => console.log("Loaded MathJax script!") }
+                onError={ (MathJax, error) => {
+                    console.warn(error);
+                    console.log("Encountered a MathJax error, re-attempting a typeset!");
+                    MathJax.Hub.Queue(
+                      MathJax.Hub.Typeset()
+                    );
+                } }
+                script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=AM_HTMLorMML"
+                options={ {
+                    asciimath2jax: {
+                         useMathMLspacing: true,
+                         delimiters: [["$$","$$"]],
+                         preview: "none",
+                    }
+                } }
+            >
+                <MathJax.Text text={ this.content }/>
+            </MathJax.Context>
+        );
+  }
+}
 
-export default JackedMath;
+class JackedMathAsciiBlock extends React.Component{
+ ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
+  render()
+  {
+    return (
+            <div>
+                <MathJax.Context input='ascii'>
+                    <div>
+                      Block Display:  <MathJax.Node>{this.ascii}</MathJax.Node>
+                    </div>
+                </MathJax.Context>
+            </div>
+        );
+  }
+}
+
+
+class JackedMathLatex extends React.Component{
+   tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
+  render()
+  {
+    return (
+           <div>
+               <MathJax.Context input='tex'>
+                   <div>
+                       This is an inline math formula: <MathJax.Node inline>{this.tex}</MathJax.Node>
+                   </div>
+               </MathJax.Context>
+           </div>
+       );
+  }
+}
+
+class JackedMathLatexBlock extends React.Component{
+  tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
+  render()
+  {
+    return (
+            <div>
+                <MathJax.Context input='tex'>
+                    <div>
+                      Block Latex:   <MathJax.Node>{this.tex}</MathJax.Node>
+                    </div>
+                </MathJax.Context>
+            </div>
+        );
+  }
+}
+export {JackedMathAscii,JackedMathAsciiBlock, JackedMathAsciiDelimeters,JackedMathLatex, JackedMathLatexBlock}
+//export default JackedMath;
 
 //  Inline display of AsciiMath without delimiters
 // module.exports = () => {
