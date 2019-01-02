@@ -23,7 +23,7 @@ class JackedMathAscii extends React.Component{
 // const content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$${ascii}$$`
 class JackedMathAsciiDelimeters extends React.Component{
   ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
-   content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$${this.ascii}$$`
+   content = `This can be dynamic text (e.g. user-entered) text with ascii math embedded in $$ symbols like $$ $$ ${this.ascii} $$`
   render()
   {
     return (
@@ -101,6 +101,32 @@ class JackedMathLatexBlock extends React.Component{
   }
 }
 export {JackedMathAscii,JackedMathAsciiBlock, JackedMathAsciiDelimeters,JackedMathLatex, JackedMathLatexBlock}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //export default JackedMath;
 
 //  Inline display of AsciiMath without delimiters
